@@ -18,7 +18,6 @@ public static class HttpServerCommander
         Console.WriteLine("help - выводит комманды\n" +
                           "start - запускает сервер http://localhost:port/\n" +
                           "stop - останавливает сервер\n" +
-                          "request <pathToFile> - добавляет на сервер html файл\n" +
                           "restart - перезапускает сервер(и добавляет туда информацию, если она была добавлена\n" +
                           "end - завершает работу\n");
     }
