@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="../css/style.css">
+        <title>Enter Pool</title>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-bg"></div>
+            <ul>
+                <li><a href="http://localhost:7777/profile">Profile</a></li>
+                <li><a href="http://localhost:7777/authorisation">Authorisation</a></li>
+                <li><a href="http://localhost:7777/registration">Registration</a></li>
+                <li><a href="http://localhost:7777/sites">Sites</a></li>
+                <li><a href="http://localhost:7777/favorite">Favorite</a></li>
+                <li><a href="http://localhost:7777/posts">Posts</a></li>
+                <li><a href="http://localhost:7777/genres">Genres</a></li>
+            </ul>
+        </nav>
+        <div class="login_form_container">
+            <form method="post" class="login_form" autocomplete="on" >
+                <fieldset>
+                    <div>
+                        <label>
+                            <b>Login</b>
+                        </label>
+                        
+                        <input type = "text" name = "login" id = "login" autocomplete="login">
+                    </div>
+                    <label>
+                        <b>Password</b>
+                    </label>
+                    <input type = "password" name = "password" id = "login" autocomplete="password">
+                    <div>
+                        <label>
+                            <input type="checkbox" style= "height: 15px; width: 22px; display: inline-block" name="remember_me" value = "on" /> Remember me
+                            <input type="hidden"name="remember_me" value="off" style = "margin: 0 0px"/>
+                        </label>
+                    </div>
+                    <button type="Sign In">
+                        <b>Sign in</b>
+                    </button> 
+                    <a href="http://localhost:7777/registration">Sign up</a>
+                </fieldset>
+            </form>
+        </div>
+    </body> 
+</html>
