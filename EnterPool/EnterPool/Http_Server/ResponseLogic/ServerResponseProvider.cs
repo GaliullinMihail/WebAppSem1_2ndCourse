@@ -20,11 +20,11 @@ public class ServerResponseProvider
         var urlReffer = ctx.Request.UrlReferrer is null ? "" : ctx.Request.UrlReferrer.AbsolutePath;
         if (!Directory.Exists(path))
             buffer = Encoding.UTF8.GetBytes($"Directory {path} not found.");
-        else if (TryGetFileToContext(path + "html" + urlReffer + rawUrl.Replace("%20", " "), ctx))
+        else if (GetFileUpdateContext(path + "html" + urlReffer + rawUrl.Replace("%20", " "), ctx))
             return response;
         else if (TryHandleController(request, response))
             return response;
-        FillResponse(response, "text/plain", (int)HttpStatusCode.NotFound, buffer);
+        ChangeResponse(response, "text/plain", (int)HttpStatusCode.NotFound, buffer);
         return response;
     }
 
@@ -34,7 +34,7 @@ public class ServerResponseProvider
         return Mime.GetMimeType(extension);
     }
 
-    public static bool TryGetFileToContext(string filePath, HttpListenerContext ctx)
+    public static bool GetFileUpdateContext(string filePath, HttpListenerContext ctx)
     {
         byte[] buffer;
         if (Directory.Exists(filePath) && File.Exists(filePath + "index.html"))
@@ -42,7 +42,7 @@ public class ServerResponseProvider
         else if (!File.Exists(filePath))
             return false;
         else buffer = File.ReadAllBytes(filePath);
-        FillResponse(ctx.Response, GetContentType(ctx.Request.RawUrl ?? ""), (int)HttpStatusCode.OK, buffer);
+        ChangeResponse(ctx.Response, GetContentType(ctx.Request.RawUrl ?? ""), (int)HttpStatusCode.OK, buffer);
         return true;
     }
 
@@ -95,14 +95,14 @@ public class ServerResponseProvider
         if (IsRequiredAuthentification(controllerName) && !isAuthorised)
         {
             response.Redirect(Location.Authorisation);
-            FillResponse(response, "text/html", (int)HttpStatusCode.Redirect, Array.Empty<byte>());
+            ChangeResponse(response, "text/html", (int)HttpStatusCode.Redirect, Array.Empty<byte>());
             return true;
         }
 
         if (IsRequiredRedirect(controllerName) && isAuthorised)
         {
             response.Redirect(Location.Profile);
-            FillResponse(response, "text/html", (int)HttpStatusCode.Redirect, Array.Empty<byte>());
+            ChangeResponse(response, "text/html", (int)HttpStatusCode.Redirect, Array.Empty<byte>());
             return true;
         }
         
@@ -120,10 +120,10 @@ public class ServerResponseProvider
             var flag = (bool)ret;
             if (!flag)
             {
-                FillResponse(response, "text/html", (int)HttpStatusCode.OK, Array.Empty<byte>());
+                ChangeResponse(response, "text/html", (int)HttpStatusCode.OK, Array.Empty<byte>());
                 return true;
             }
-            FillResponse(response, "text/html", (int)HttpStatusCode.BadRequest, Array.Empty<byte>());
+            ChangeResponse(response, "text/html", (int)HttpStatusCode.BadRequest, Array.Empty<byte>());
             return true;
 
         }
@@ -153,9 +153,9 @@ public class ServerResponseProvider
             if (!acc.Item1)
             {
                 redirect = Location.Registration;
-                FillResponse(response, "text/html", (int)HttpStatusCode.BadRequest, Array.Empty<byte>());
+                ChangeResponse(response, "text/html", (int)HttpStatusCode.BadRequest, Array.Empty<byte>());
             }
-            FillResponse(response, "text/html", (int)HttpStatusCode.OK, Array.Empty<byte>());
+            ChangeResponse(response, "text/html", (int)HttpStatusCode.OK, Array.Empty<byte>());
         }
 
         var buffer = ret;
@@ -164,11 +164,11 @@ public class ServerResponseProvider
         {
             statusCode = HttpStatusCode.Redirect;
             response.Redirect(redirect);
-            FillResponse(response, "text/html", (int)statusCode, Array.Empty<byte>());
+            ChangeResponse(response, "text/html", (int)statusCode, Array.Empty<byte>());
             return true;
         }
 
-        FillResponse(response, "text/html", (int)statusCode, (byte[])buffer);
+        ChangeResponse(response, "text/html", (int)statusCode, (byte[])buffer);
         return true;
     }
 
@@ -205,7 +205,7 @@ public class ServerResponseProvider
         _ => Location.Main
     };
 
-    private static void FillResponse(HttpListenerResponse response, string contentType, int statusCode, byte[] buffer)
+    private static void ChangeResponse(HttpListenerResponse response, string contentType, int statusCode, byte[] buffer)
     {
         response.Headers.Set("Content-Type", contentType);
         response.StatusCode = statusCode;

@@ -151,12 +151,6 @@ public class AccountController
 
         return argon2.GetBytes(16);
     }
-    
-    private bool VerifyHash(string password, byte[] salt, byte[] hash)
-    {
-        var newHash = HashPassword(password, salt);
-        return hash.SequenceEqual(newHash);
-    }
 
     private static bool Validate(string text)
     {
