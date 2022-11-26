@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Enter Pool</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body>
+        <nav>
+            <div class="nav-bg"></div>
+            <ul>
+                <li><a href="http://localhost:7777/profile">Profile</a></li>
+                <li><a href="http://localhost:7777/authorisation">Authorisation</a></li>
+                <li><a href="http://localhost:7777/registration">Registration</a></li>
+                <li><a href="http://localhost:7777/sites">Sites</a></li>
+                <li><a href="http://localhost:7777/favorite">Favorite</a></li>
+                <li><a href="http://localhost:7777/posts">Posts</a></li>
+                <li><a href="http://localhost:7777/genres">Genres</a></li>
+            </ul>
+        </nav>
+        <div class = 'genres'>
+            <ul>
+            {{for genre in genres}}
+            <div class ='list'>
+                 <h2>{{genre.title}}</h2>
+                 <h3>{{genre.description}}</h3>
+                 <h2><a href="{{genre.example}}">{{genre.example}}</a></h2>
+                </div>
+                {{end}}
+            </ul>
+        </div>
+    </body>
+</html>

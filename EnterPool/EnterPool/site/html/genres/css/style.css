@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+}
+
+nav {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: .2em 2em;
+  float: right;
+}
+
+nav a {
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-decoration: none;
+  font-size: 1.15em;
+  letter-spacing: 1px;
+  transition: .25s ease-in-out;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0;
+  padding: .2em .7em;
+}
+
+a{
+    color: deepskyblue;
+}
+b{
+    display: inline-block;
+}
+
+button{
+    display: inline-block;
+    height: 20px;
+    background-color: skyblue;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.list {
+    width: 100%;
+    color: white;
+    margin-bottom: 50px;
+    background: dimgrey;
+}
+
+.genres {
+    padding-top: 30px;
+    color: wheat;
+}
