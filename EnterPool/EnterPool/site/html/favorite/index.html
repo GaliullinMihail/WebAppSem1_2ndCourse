@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Enter Pool</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body>
+        <nav>
+            <div class="nav-bg"></div>
+            <ul>
+                <li><a href="http://localhost:7777/">Main</a></li>
+                <li><a href="http://localhost:7777/profile">Profile</a></li>
+                <li><a href="http://localhost:7777/authorisation">Authorisation</a></li>
+                <li><a href="http://localhost:7777/registration">Registration</a></li>
+                <li><a href="http://localhost:7777/sites">Sites</a></li>
+                <li><a href="http://localhost:7777/favorite">Favorite</a></li>
+                <li><a href="http://localhost:7777/posts">Posts</a></li>
+                <li><a href="http://localhost:7777/genres">Genres</a></li>
+            </ul>
+        </nav>
+        <div class ="sites">
+            <ul>
+                {{for site in sites}}
+                <div class="list">
+                    <h3>Genre : {{site.genre}}</h3>
+                    <h2>Link : <a href="{{site.site}}">{{site.site}}</a></h2>
+                    <form method="post" class="delete_From_Favorite">
+                        <fieldset style= "border-style:none">
+                            <input type="text" name = "favoriteSite" value="{{site.site}}" style="display: none">
+                            <button type="Sign In">
+                                <b>Delete From Favorite</b>
+                            </button> 
+                        </fieldset>
+                    </form>  
+                </div>
+                {{end}}
+            </ul>
+        </div>
+    </body>
+</html>
