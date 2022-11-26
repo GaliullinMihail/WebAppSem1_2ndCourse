@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Enter Pool</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body>
+        <nav>
+            <div class="nav-bg"></div>
+            <ul>
+                <li><a href="http://localhost:7777/profile">Profile</a></li>
+                <li><a href="http://localhost:7777/authorisation">Authorisation</a></li>
+                <li><a href="http://localhost:7777/registration">Registration</a></li>
+                <li><a href="http://localhost:7777/sites">Sites</a></li>
+                <li><a href="http://localhost:7777/favorite">Favorite</a></li>
+                <li><a href="http://localhost:7777/posts">Posts</a></li>
+                <li><a href="http://localhost:7777/genres">Genres</a></li>
+            </ul>
+        </nav>
+        
+        <div class="enter_form_container">
+            <form  class="js-form" method="post" id = "form" action="" novalidate> 
+                <fieldset>
+                    <div>
+                        <label>
+                            <b>Login</b>
+                            <div class= "hideInput">Login from 6 to 30 chars contains only symbols(a-Z) and digits</div>
+                        </label>
+                        <input type="text" id = "login" class="input js-input js-login" name ="login">
+                    </div>
+                    <div>
+                        <label>
+                            <div class= "hidePassword">Password from 6 to 30 chars and contains only symbols(a-Z) and digits</div>
+                            <b>Password</b>
+                        </label>
+                        <input type="password" id = "password" class="input js-input js-password" name ="password">
+                    </div>
+                    <div>
+                        <label>
+                            <div class= "hidePasswordRepeat">password should be equal to repeat Password</div>
+                            <b>Repeat Password</b>
+                        </label>
+                        <input type="password" id = "repeatPassword" class="input js-input js-password-repeat" name = "checkPassword">
+                    </div>
+                    <div>
+                        <button class="btn" type="submit">
+                            <b>Sign up</b>
+                        </button> 
+                    </div>
+                    <a href="http://localhost:7777/authorisation">Sign in</a>
+                    </fieldset>
+                <div class = "login_already_exists">Login already exists</div>
+                <div class = "login_is_free_to_use">Login is free to use</div>
+                <button class ="btn" id ="check">Check Login</button>
+            </form>
+            
+        </div>
+        <script src="../js/password.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" type="text/javascript"></script>
+        <script>
+            
+        jQuery(document).ready(function($){
+            var input = document.querySelector("#login");
+            var loginExist = document.querySelector(".login_already_exists");
+            var loginFree = document.querySelector(".login_is_free_to_use");
+            $(function() {
+                $("#check").click(function(){
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:7777/check",
+                        data: {'login': input.value},
+                        statusCode: {
+                            400: function() {
+                                loginExist.style.display ="block";
+                                loginFree.style.display ="none";
+                            },
+                            200:function(){
+                                loginFree.style.display ="block";
+                                loginExist.style.display ="none";
+                            }
+                        }
+                    })
+                })
+            })
+        })
+        </script>
+    </body>
+</html>
