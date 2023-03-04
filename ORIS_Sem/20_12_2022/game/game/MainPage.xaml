@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="game.MainPage">
+
+    <StackLayout>
+        <Label Text="StartGame"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+               FontSize="50"/>
+        <ImageButton
+                x:Name="CounterBtn"
+                Source="play.png"
+                Clicked="OnCounterClicked"
+                ScaleX="0.1"
+                ScaleY="0.1"
+                TranslationY="-600"/>
+    </StackLayout>
+
+</ContentPage>

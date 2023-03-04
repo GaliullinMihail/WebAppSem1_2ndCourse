@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTLMEngine", "HTLMEngine\HTLMEngine.csproj", "{EEB8A36F-1743-4F78-A372-5C10747A4226}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTMLEngineLibrary", "HTMLEngineLibrary\HTMLEngineLibrary.csproj", "{47D7FBF5-1266-448E-A923-67C61B440BA7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEB8A36F-1743-4F78-A372-5C10747A4226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEB8A36F-1743-4F78-A372-5C10747A4226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEB8A36F-1743-4F78-A372-5C10747A4226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEB8A36F-1743-4F78-A372-5C10747A4226}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47D7FBF5-1266-448E-A923-67C61B440BA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47D7FBF5-1266-448E-A923-67C61B440BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47D7FBF5-1266-448E-A923-67C61B440BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47D7FBF5-1266-448E-A923-67C61B440BA7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
